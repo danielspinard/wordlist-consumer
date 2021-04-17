@@ -17,4 +17,23 @@ class ConsumerFacade
     {
         self::$wordlist = (new Consumer($path))->open();
     }
+
+    /**
+     * @return array
+     */
+    public static function wordlist(): array
+    {
+        return self::$wordlist;
+    }
+
+    /**
+     * @return string
+     */
+    public static function string(): string
+    {
+        $words = self::wordlist();
+        $rand = rand(0, count($words) - 1);
+
+        return str_replace([PHP_EOL, '-'], '', $words[$rand]);
+    }
 }
