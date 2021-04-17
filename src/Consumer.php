@@ -18,4 +18,12 @@ class Consumer
     {
         return file_exists(self::$path);
     }
+
+    /**
+     * @return array
+     */
+    public static function open(): array
+    {
+        return file(self::$path);
+    }
 }
