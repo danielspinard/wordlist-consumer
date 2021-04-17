@@ -1,4 +1,6 @@
 /.git
+/.code
+/.idea
 /vendor
 /tests
 composer.lock
