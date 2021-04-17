@@ -24,6 +24,9 @@ class Consumer
      */
     public static function open(): array
     {
+        if (!self::exists())
+            throw new WordlistNotFoundException('Wordlist file not found in ' . self::$path);
+
         return file(self::$path);
     }
 }
