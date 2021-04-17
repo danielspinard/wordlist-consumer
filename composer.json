@@ -3,5 +3,8 @@
         "psr-4": {
             "WordlistConsumer\\": "src/"
         }
+    },
+    "require-dev": {
+        "symfony/error-handler": "5.2.*"
     }
 }
