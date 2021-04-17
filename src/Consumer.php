@@ -9,24 +9,29 @@ class Consumer
     /**
      * @var string
      */
-    private static $path;
+    private $path;
+
+    public function __construct(string $path)
+    {
+        $this->path = $path;
+    }
 
     /**
      * @return bool
      */
-    private static function exists(): bool
+    private function exists(): bool
     {
-        return file_exists(self::$path);
+        return file_exists($this->path);
     }
 
     /**
      * @return array
      */
-    public static function open(): array
+    public function open(): array
     {
-        if (!self::exists())
-            throw new WordlistNotFoundException('Wordlist file not found in ' . self::$path);
+        if (!$this->exists())
+            throw new WordlistNotFoundException('Wordlist file not found in ' . $this->path);
 
-        return file(self::$path);
+        return file($this->path);
     }
 }
