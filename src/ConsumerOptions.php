@@ -26,4 +26,12 @@ class ConsumerOptions
 
         return null;
     }
+
+    /**
+     * @return array
+     */
+    public static function getOptions(): array
+    {
+        return self::$options;
+    }
 }
