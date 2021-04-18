@@ -42,6 +42,20 @@ class ConsumerOptions
     }
 
     /**
+     * @param string $name
+     * @return array
+     */
+    public static function getOption(string $name): array
+    {
+        $option = self::find($name);
+
+        if ($option === null)
+            throw new OptionNotFoundException('Option ' . $name . ' not found');
+
+        return $option;
+    }
+
+    /**
      * @param array $options
      * @return ConsumerOptions
      */
