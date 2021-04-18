@@ -12,15 +12,37 @@ use WordlistConsumer\Consumers\Person;
 DisplayErrors::enable();
 
 /**
- * WordlistConsumer options component
+ * WordlistConsumerOptions component
  */
 $options = ConsumerOptions::create();
-ConsumerOptions::addOption('age', ['min' => 18, 'max' => 65]);
+
+/**
+ * wordlist: your wordlist names path (string)
+ */
 ConsumerOptions::addOption('name', ['wordlist' => __DIR__ . '/wordlist/names.txt']);
+
+/**
+ * between {min} and {max} years
+ * min: minimum age (int)
+ * max: maximum age (int)
+ */
+ConsumerOptions::addOption('age', [
+    'min' => 18,
+    'max' => 65
+]);
+
+/**
+ * wordlist: your wordlist surnames path (string)
+ */
 ConsumerOptions::addOption('surname', ['wordlist' => __DIR__ . '/wordlist/surnames.txt']);
+
+/**
+ * wordlist: your wordlist email domains (string)
+ */
+ConsumerOptions::addOption('email', ['wordlist' => __DIR__ . '/wordlist/domains.txt']);
 
 /**
  * Make person with options
  */
 $person = new Person($options);
-dump('full name: ' . $person->name . ' ' . $person->surname);
+dd($person);
