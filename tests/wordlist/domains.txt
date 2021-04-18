@@ -1,0 +1,8 @@
+gmail.com
+outlook.com
+terra.com
+hotmail.com
+google.com
+tests.com
+example.com
+github.com
