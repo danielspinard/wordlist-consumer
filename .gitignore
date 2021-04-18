@@ -2,6 +2,5 @@
 /.code
 /.idea
 /vendor
-/tests
 composer.lock
 .gitignore
