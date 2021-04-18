@@ -13,9 +13,10 @@ class ConsumerFacade
      * @param string $path
      * @return void
      */
-    public static function make(string $path)
+    public static function load(string $path): ConsumerFacade
     {
         self::$wordlist = (new Consumer($path))->open();
+        return new self;
     }
 
     /**
