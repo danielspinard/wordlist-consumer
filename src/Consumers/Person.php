@@ -8,6 +8,11 @@ use WordlistConsumer\ConsumerOptions;
 class Person implements ConsumerInterface
 {
     /**
+     * @var ConsumerOptions
+     */
+    private $options;
+
+    /**
      * @var string
      */
     private $name;
@@ -38,10 +43,13 @@ class Person implements ConsumerInterface
     private $address;
 
     /**
+     * Person constructor
+     * 
      * @param ConsumerOptions $option
      */
-    public function __construct(ConsumerOptions $option = null)
+    public function __construct(ConsumerOptions $consumerOptions = null)
     {
+        $this->options = $consumerOptions;
     }
 
     /**
