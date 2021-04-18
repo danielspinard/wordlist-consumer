@@ -4,14 +4,10 @@ namespace WordlistConsumer\Consumers;
 
 use WordlistConsumer\Interfaces\ConsumerInterface;
 use WordlistConsumer\ConsumerOptions;
+use WordlistConsumer\Maker\PersonMaker;
 
 class Person implements ConsumerInterface
 {
-    /**
-     * @var ConsumerOptions
-     */
-    private $options;
-
     /**
      * @var string
      */
@@ -49,7 +45,7 @@ class Person implements ConsumerInterface
      */
     public function __construct(ConsumerOptions $consumerOptions = null)
     {
-        $this->options = $consumerOptions;
+        $this->__make((new PersonMaker)->make($consumerOptions));
     }
 
     /**
@@ -81,5 +77,20 @@ class Person implements ConsumerInterface
     public function __isset(string $attribute): bool
     {
         return isset($this->$attribute);
+    }
+
+    /**
+     * @param PersonMaker $maker
+     * @return Person
+     */
+    public function __make($maker): Person
+    {
+        $person = $maker->result();
+
+        foreach ($person as $attribute => $value) {
+            $this->__set($attribute, $value);
+        }
+
+        return $this;
     }
 }
