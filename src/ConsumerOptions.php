@@ -42,6 +42,18 @@ class ConsumerOptions
     }
 
     /**
+     * @param array $options
+     * @return ConsumerOptions
+     */
+    public static function addOptions(array $options): ConsumerOptions
+    {
+        foreach ($options as $option => $config)
+            self::addOption($option, $config);
+
+        return new self;
+    }
+
+    /**
      * @return array
      */
     public static function getOptions(): array
