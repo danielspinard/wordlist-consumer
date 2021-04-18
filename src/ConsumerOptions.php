@@ -28,6 +28,20 @@ class ConsumerOptions
     }
 
     /**
+     * @param string $option
+     * @param array $config
+     * @return ConsumerOptions
+     */
+    public static function addOption(string $option, array $config): ConsumerOptions
+    {
+        if (self::find($option) !== null)
+            throw new OptionAlreadyDefinedException('The option ' . $option . ' is already defined');
+
+        array_push(self::$options, [$option => $config]);
+        return new self;
+    }
+
+    /**
      * @return array
      */
     public static function getOptions(): array
