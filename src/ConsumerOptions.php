@@ -52,7 +52,7 @@ class ConsumerOptions
         if ($option === null)
             throw new OptionNotFoundException('Option ' . $name . ' not found');
 
-        return $option;
+        return $option[$name];
     }
 
     /**
