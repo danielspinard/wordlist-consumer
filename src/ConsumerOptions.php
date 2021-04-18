@@ -28,6 +28,18 @@ class ConsumerOptions
     }
 
     /**
+     * @param array $options
+     * @return ConsumerOptions
+     */
+    public static function create(array $options = []): ConsumerOptions
+    {
+        if ($options !== null)
+            self::addOptions($options);
+
+        return new self;
+    }
+
+    /**
      * @param string $option
      * @param array $config
      * @return ConsumerOptions
