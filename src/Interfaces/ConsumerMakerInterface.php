@@ -7,12 +7,13 @@ use WordlistConsumer\ConsumerOptions;
 interface ConsumerMakerInterface
 {
     /**
+     * @param ConsumerOptions $options
      * @return ConsumerMakerInterface
      */
-    public function reset(): ConsumerMakerInterface;
+    public function reset(ConsumerOptions $options = null): ConsumerMakerInterface;
 
     /**
-     * @param ConsumerOptions|null $options
+     * @param ConsumerOptions $options
      * @return ConsumerMakerInterface
      */
     public function make(ConsumerOptions $options = null): ConsumerMakerInterface;
