@@ -32,8 +32,8 @@ class ConsumerFacade
     public static function string(): string
     {
         $words = self::wordlist();
-        $rand = rand(0, count($words) - 1);
+        $word = $words[rand(0, count($words) - 1)];
 
-        return str_replace([PHP_EOL, '-'], '', $words[$rand]);
+        return ucfirst(str_replace([PHP_EOL, '-'], '', $word));
     }
 }
