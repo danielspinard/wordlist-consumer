@@ -30,4 +30,10 @@ interface ConsumerInterface
      * @return bool
      */
     public function __isset(string $attribute): bool;
+
+    /**
+     * @param ConsumerMakerInterface $maker
+     * @return ConsumerInterface
+     */
+    public function __make(ConsumerMakerInterface $maker): ConsumerInterface;
 }
