@@ -7,4 +7,8 @@ use WordlistConsumer\Exceptions\OptionAlreadyDefinedException;
 
 class ConsumerOptions
 {
+    /**
+     * @var array
+     */
+    private static $options;
 }
