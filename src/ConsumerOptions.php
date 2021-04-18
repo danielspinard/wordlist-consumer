@@ -10,7 +10,7 @@ class ConsumerOptions
     /**
      * @var array
      */
-    private static $options;
+    private static $options = [];
 
     /**
      * @param string $name
