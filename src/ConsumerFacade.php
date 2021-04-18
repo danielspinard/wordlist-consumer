@@ -36,4 +36,19 @@ class ConsumerFacade
 
         return ucfirst(str_replace([PHP_EOL, '-'], '', $word));
     }
+
+    /**
+     * @param int $size
+     * @param string $delimiter
+     * @return string
+     */
+    public static function strings(int $size, string $delimiter = ' '): string
+    {
+        $string = self::string();
+
+        for ($counter = 1; $counter < $size; $counter++)
+            $string .= $delimiter . self::string();
+
+        return $string;
+    }
 }
