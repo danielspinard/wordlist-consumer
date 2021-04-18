@@ -7,9 +7,9 @@ use WordlistConsumer\ConsumerOptions;
 interface ConsumerInterface
 {
     /**
-     * @param ConsumerOptions $option
+     * @param ConsumerOptions $options
      */
-    public function __construct(ConsumerOptions $option = null);
+    public function __construct(ConsumerOptions $options = null);
 
     /**
      * @param string $attribute
