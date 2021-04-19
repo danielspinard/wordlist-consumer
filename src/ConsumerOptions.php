@@ -33,8 +33,9 @@ class ConsumerOptions
      */
     public static function create(array $options = []): ConsumerOptions
     {
-        if ($options !== null)
+        if ($options !== null) {
             self::addOptions($options);
+        }
 
         return new self;
     }
@@ -46,8 +47,9 @@ class ConsumerOptions
      */
     public static function addOption(string $option, array $config): ConsumerOptions
     {
-        if (self::find($option) !== null)
+        if (self::find($option) !== null) {
             throw new OptionAlreadyDefinedException('The option ' . $option . ' is already defined');
+        }
 
         array_push(self::$options, [$option => $config]);
         return new self;
@@ -61,8 +63,9 @@ class ConsumerOptions
     {
         $option = self::find($name);
 
-        if ($option === null)
+        if ($option === null) {
             throw new OptionNotFoundException('Option ' . $name . ' not found');
+        }
 
         return $option[$name];
     }
