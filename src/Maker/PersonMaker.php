@@ -103,8 +103,8 @@ class PersonMaker implements ConsumerMakerInterface
      */
     private function makeAge(): void
     {
-        $options = $this->option('age');
-        $this->person->age = rand($option->min ?? 18, $option->max ?? 80);
+        $ageOptions = $this->option('age');
+        $this->person->age = rand($ageOptions->min ?? 18, $ageOptions->max ?? 80);
     }
 
     /**
