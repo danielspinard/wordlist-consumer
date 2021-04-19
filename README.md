@@ -12,8 +12,8 @@ composer require danielspinard/wordlist-consumer
 Open library [Packagist](https://packagist.org/packages/danielspinard/wordlist-consumer)
 
 ### Consumers
-Person - ✔️
-Address - ❌
+Person - ✔️ <br>
+Address - ❌ <br>
 Company - ❌
 
 ### Tests output
