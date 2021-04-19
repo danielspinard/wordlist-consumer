@@ -9,6 +9,36 @@ use WordlistConsumer\ConsumerFacade;
 class PersonMaker implements ConsumerMakerInterface
 {
     /**
+     * @const int
+     */
+    const MIN_AGE = 18;
+
+    /**
+     * @const int
+     */
+    const MAX_AGE = 65;
+
+    /**
+     * @const int
+     */
+    const MIN_DAYS = 1;
+
+    /**
+     * @const int
+     */
+    const MAX_DAYS = 27;
+
+    /**
+     * @const int
+     */
+    const MIN_MONTH = 1;
+
+    /**
+     * @const int
+     */
+    const MAX_MONTH = 12;
+
+    /**
      * @var object
      */
     private $person;
@@ -104,7 +134,10 @@ class PersonMaker implements ConsumerMakerInterface
     private function makeAge(): void
     {
         $ageOptions = $this->option('age');
-        $this->person->age = rand($ageOptions->min ?? 18, $ageOptions->max ?? 80);
+        $this->person->age = rand(
+            $ageOptions->min ?? PersonMaker::MIN_AGE,
+            $ageOptions->max ?? PersonMaker::MAX_AGE
+        );
     }
 
     /**
@@ -113,8 +146,8 @@ class PersonMaker implements ConsumerMakerInterface
     private function makeBirth(): void
     {
         $this->person->birth = new \stdClass;
-        $this->person->birth->day = rand(1, 27);
-        $this->person->birth->month = rand(1, 12);
+        $this->person->birth->day = rand(PersonMaker::MIN_DAYS, PersonMaker::MAX_DAYS);
+        $this->person->birth->month = rand(PersonMaker::MIN_MONTH, PersonMaker::MAX_MONTH);
         $this->person->birth->year = (new \DateTime())->format('Y') - $this->person->age;
     }
 
