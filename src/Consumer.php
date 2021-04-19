@@ -34,8 +34,9 @@ class Consumer
      */
     public function open(): array
     {
-        if (!$this->exists())
+        if (!$this->exists()) {
             throw new WordlistNotFoundException('Wordlist file not found in ' . $this->path);
+        }
 
         return file($this->path);
     }
