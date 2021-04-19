@@ -1,7 +1,8 @@
 # Wordlist Consumer
 
 ## What is Wordlist-Consumer?
-The word list consumer is an intelligent consumer, able to consume word lists and return an almost real object (Person, Address, Company)!
+The word list consumer is an intelligent consumer, able to consume word lists and return an almost real object (Person, Address, Company)! <br>
+
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=danielspinard_wordlist-consumer&metric=bugs)](https://sonarcloud.io/dashboard?id=danielspinard_wordlist-consumer)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=danielspinard_wordlist-consumer&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=danielspinard_wordlist-consumer)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=danielspinard_wordlist-consumer&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=danielspinard_wordlist-consumer)
