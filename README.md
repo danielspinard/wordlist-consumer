@@ -1,8 +1,5 @@
 # Wordlist Consumer
 
-## What is Wordlist-Consumer?
-The word list consumer is an intelligent consumer, able to consume word lists and return an almost real object (Person, Address, Company)! <br>
-
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=danielspinard_wordlist-consumer&metric=bugs)](https://sonarcloud.io/dashboard?id=danielspinard_wordlist-consumer)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=danielspinard_wordlist-consumer&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=danielspinard_wordlist-consumer)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=danielspinard_wordlist-consumer&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=danielspinard_wordlist-consumer)
@@ -11,6 +8,8 @@ The word list consumer is an intelligent consumer, able to consume word lists an
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=danielspinard_wordlist-consumer&metric=alert_status)](https://sonarcloud.io/dashboard?id=danielspinard_wordlist-consumer)
 [![CodeFactor](https://www.codefactor.io/repository/github/danielspinard/wordlist-consumer/badge)](https://www.codefactor.io/repository/github/danielspinard/wordlist-consumer)
 
+## What is Wordlist-Consumer?
+The word list consumer is an intelligent consumer, able to consume word lists and return an almost real object (Person, Address, Company)!
 
 ### Installing
 This library can be installed by the composer, the command to install is the one below:
