@@ -1,4 +1,21 @@
 {
+    "name": "danielspinard/wordlist-consumer",
+    "type": "library",
+    "description": "A smart consumer capable of consuming word lists and returning an almost real objects",
+    "keywords": [
+        "wordlist-consumer",
+        "wordlist-manager",
+        "wordlist php",
+        "work with wordlist php"
+    ],
+    "homepage": "https://github.com/danielspinard/wordlist-consumer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Monteiro",
+            "homepage": "https://github.com/danielspinard"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "WordlistConsumer\\": "src/"
