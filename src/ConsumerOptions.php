@@ -76,8 +76,9 @@ class ConsumerOptions
      */
     public static function addOptions(array $options): ConsumerOptions
     {
-        foreach ($options as $option => $config)
+        foreach ($options as $option => $config) {
             self::addOption($option, $config);
+        }
 
         return new self;
     }
