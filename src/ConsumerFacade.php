@@ -47,8 +47,9 @@ class ConsumerFacade
     {
         $string = self::string();
 
-        for ($counter = 1; $counter < $size; $counter++)
+        for ($counter = 1; $counter < $size; $counter++) {
             $string .= $delimiter . self::string();
+        }
 
         return $string;
     }
