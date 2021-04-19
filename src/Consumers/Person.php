@@ -11,32 +11,32 @@ class Person implements ConsumerInterface
     /**
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      */
-    private $surname;
+    protected $surname;
 
     /**
      * @var string
      */
-    private $email;
+    protected $email;
 
     /**
      * @var int
      */
-    private $age;
+    protected $age;
 
     /**
      * @var object
      */
-    private $birth;
+    protected $birth;
 
     /**
      * @var object
      */
-    private $address;
+    protected $address;
 
     /**
      * Person constructor
