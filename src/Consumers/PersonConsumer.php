@@ -6,7 +6,7 @@ use WordlistConsumer\Interfaces\ConsumerInterface;
 use WordlistConsumer\ConsumerOptions;
 use WordlistConsumer\Maker\PersonMaker;
 
-class Person implements ConsumerInterface
+class PersonConsumer implements ConsumerInterface
 {
     /**
      * @var string
