@@ -4,7 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Symfony\Component\ErrorHandler\Debug as DisplayErrors;
 use WordlistConsumer\ConsumerOptions;
-use WordlistConsumer\Consumers\Person;
+use WordlistConsumer\Consumers\PersonConsumer;
 
 /**
  * Symfony component (only require-dev)
@@ -44,5 +44,9 @@ ConsumerOptions::addOption('email', ['wordlist' => __DIR__ . '/wordlist/domains.
 /**
  * Make person with options
  */
-$person = new Person($options);
-dd($person);
+$person = new PersonConsumer($options);
+dump($person);
+dump('My name is ' . $person->name);
+dump('I have ' . $person->age . ' years');
+dump('I was born on the ' . $person->birth->day .  'th of the ' . $person->birth->month . 'th month');
+dump('Send me an e-mail at ' . $person->email);
