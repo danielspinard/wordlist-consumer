@@ -50,9 +50,9 @@ class PersonMaker implements ConsumerMakerInterface
 
     /**
      * @param ConsumerOptions $options
-     * @return PersonMaker
+     * @return ConsumerMakerInterface
      */
-    public function reset(ConsumerOptions $options = null): PersonMaker
+    public function reset(ConsumerOptions $options = null): ConsumerMakerInterface
     {
         $this->person = new \stdClass();
         $this->options = $options;
@@ -69,9 +69,9 @@ class PersonMaker implements ConsumerMakerInterface
 
     /**
      * @param ConsumerOptions $consumerOptions
-     * @return object
+     * @return ConsumerMakerInterface
      */
-    public function make(ConsumerOptions $options = null): PersonMaker
+    public function make(ConsumerOptions $options = null): ConsumerMakerInterface
     {
         $this->reset($options);
         

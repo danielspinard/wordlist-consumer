@@ -51,9 +51,9 @@ class PersonConsumer implements ConsumerInterface
     /**
      * @param string $attribute
      * @param mixed $value
-     * @return Person
+     * @return ConsumerInterface
      */
-    public function __set(string $attribute, $value): Person
+    public function __set(string $attribute, $value): ConsumerInterface
     {
         $this->$attribute = $value;
         return $this;
@@ -83,7 +83,7 @@ class PersonConsumer implements ConsumerInterface
      * @param PersonMaker $maker
      * @return Person
      */
-    public function __make($maker): Person
+    public function __make($maker): ConsumerInterface
     {
         $person = $maker->result();
 
