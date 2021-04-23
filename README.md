@@ -46,4 +46,10 @@ php tests/person.php
   }
   -address: null
 }
+
+^ "My name is Maarten"
+^ "I have 36 years"
+^ "I was born on the 10th of the 12th month"
+^ "Send me an e-mail at maartengile6125@outlook.com"
+
 ```
