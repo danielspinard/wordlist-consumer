@@ -3,6 +3,7 @@
 namespace WordlistConsumer\Consumers;
 
 use WordlistConsumer\Interfaces\ConsumerInterface;
+use WordlistConsumer\Interfaces\ConsumerMakerInterface;
 use WordlistConsumer\ConsumerOptions;
 use WordlistConsumer\Maker\PersonMaker;
 
@@ -81,9 +82,9 @@ class PersonConsumer implements ConsumerInterface
 
     /**
      * @param PersonMaker $maker
-     * @return Person
+     * @return ConsumerMakerInterface
      */
-    public function __make($maker): ConsumerInterface
+    public function __make(ConsumerMakerInterface $maker): ConsumerInterface
     {
         $person = $maker->result();
 
