@@ -2,11 +2,15 @@
 
 namespace WordlistConsumer\Maker;
 
-use WordlistConsumer\Interfaces\ConsumerMakerInterface;
+use stdClass;
+use DateTime;
+use WordlistConsumer\MakerBase;
 use WordlistConsumer\ConsumerOptions;
-use WordlistConsumer\ConsumerFacade;
+use WordlistConsumer\Exceptions\OptionNotFoundException;
+use WordlistConsumer\Exceptions\WordlistNotFoundException;
+use WordlistConsumer\Interfaces\ConsumerMakerInterface;
 
-class PersonMaker implements ConsumerMakerInterface
+class PersonMaker extends MakerBase
 {
     /**
      * @const int
@@ -39,42 +43,19 @@ class PersonMaker implements ConsumerMakerInterface
     const MAX_MONTH = 12;
 
     /**
-     * @var object
+     * PersonMaker constructor.
+     * @param ConsumerOptions|null $options
      */
-    private $person;
-
-    /**
-     * @var ConsumerOptions
-     */
-    private $options;
-
-    /**
-     * @param ConsumerOptions $options
-     * @return ConsumerMakerInterface
-     */
-    public function reset(ConsumerOptions $options = null): ConsumerMakerInterface
+    public function __construct(ConsumerOptions $options = null)
     {
-        $this->person = new \stdClass();
-        $this->options = $options;
-        return $this;
+        parent::__construct($options);
     }
 
     /**
-     * @return object
-     */
-    public function result(): object
-    {
-        return $this->person;
-    }
-
-    /**
-     * @param ConsumerOptions $consumerOptions
      * @return ConsumerMakerInterface
      */
-    public function make(ConsumerOptions $options = null): ConsumerMakerInterface
+    public function make(): ConsumerMakerInterface
     {
-        $this->reset($options);
-        
         foreach (get_class_methods($this) as $method) {
             if ($method === __FUNCTION__ || strpos($method, 'make') === false) {
                 continue;
@@ -87,54 +68,47 @@ class PersonMaker implements ConsumerMakerInterface
     }
 
     /**
-     * @param string $name
-     * @return object
-     */
-    private function option(string $name): object
-    {
-        return (object) $this->options::getOption($name);
-    }
-
-    /**
      * @return void
+     * @throws OptionNotFoundException|WordlistNotFoundException
      */
     private function makeName(): void
     {
-        $wordlist = $this->option('name')->wordlist;
-        $this->person->name = ConsumerFacade::load($wordlist)::string();
+        $this->maker->name = $this->string('name');
     }
 
     /**
      * @return void
+     * @throws OptionNotFoundException
+     * @throws WordlistNotFoundException
      */
     private function makeSurname(): void
     {
-        $wordlist = $this->option('surname')->wordlist;
-        $this->person->surname = ConsumerFacade::load($wordlist)::string();
+        $this->maker->surname = $this->string('surname');
     }
 
     /**
-     * @return void
+     * @throws OptionNotFoundException
+     * @throws WordlistNotFoundException
      */
     private function makeEmail(): void
     {
-        $wordlist = $this->option('email')->wordlist;
-        $email = [
-            'name' => $this->person->name,
-            'surname' => substr($this->person->surname, 0, 4) . rand(999, 9999),
-            'domain' => '@' . ConsumerFacade::load($wordlist)::string()
+        $base = [
+            'name' => $this->maker->name,
+            'surname' => substr($this->maker->surname, 0, 4) . rand(999, 9999),
+            'domain' => '@' . $this->string('email')
         ];
-        
-        $this->person->email = strtolower($email['name'] . $email['surname'] . $email['domain']);
+
+        $this->maker->email = strtolower($base['name'] . $base['surname'] . $base['domain']);
     }
 
     /**
      * @return void
+     * @throws OptionNotFoundException
      */
     private function makeAge(): void
     {
         $ageOptions = $this->option('age');
-        $this->person->age = rand(
+        $this->maker->age = rand(
             $ageOptions->min ?? PersonMaker::MIN_AGE,
             $ageOptions->max ?? PersonMaker::MAX_AGE
         );
@@ -145,10 +119,12 @@ class PersonMaker implements ConsumerMakerInterface
      */
     private function makeBirth(): void
     {
-        $this->person->birth = new \stdClass;
-        $this->person->birth->day = rand(PersonMaker::MIN_DAYS, PersonMaker::MAX_DAYS);
-        $this->person->birth->month = rand(PersonMaker::MIN_MONTH, PersonMaker::MAX_MONTH);
-        $this->person->birth->year = (new \DateTime())->format('Y') - $this->person->age;
+        $birth = new stdClass;
+        $birth->day = rand(PersonMaker::MIN_DAYS, PersonMaker::MAX_DAYS);
+        $birth->month = rand(PersonMaker::MIN_MONTH, PersonMaker::MAX_MONTH);
+        $birth->year = (new DateTime())->format('Y') - $this->maker->age;
+
+        $this->maker->birth = $birth;
     }
 
     /**
@@ -156,6 +132,6 @@ class PersonMaker implements ConsumerMakerInterface
      */
     private function makeAddress(): void
     {
-        $this->person->address = null;
+        $this->maker->address = new stdClass();
     }
 }

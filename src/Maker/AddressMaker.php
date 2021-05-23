@@ -2,55 +2,35 @@
 
 namespace WordlistConsumer\Maker;
 
-use stdClass;
 use WordlistConsumer\Consumer;
+use WordlistConsumer\MakerBase;
 use WordlistConsumer\ConsumerOptions;
 use WordlistConsumer\Interfaces\ConsumerMakerInterface;
 use WordlistConsumer\Exceptions\OptionNotFoundException;
 use WordlistConsumer\Exceptions\WordlistNotFoundException;
 
-class AddressMaker implements ConsumerMakerInterface
+class AddressMaker extends MakerBase
 {
     /**
-     * @var object
+     * AddressMaker constructor.
+     *
+     * @param ConsumerOptions|null $options
      */
-    private object $address;
-
-    /**
-     * @return object
-     */
-    public function result(): object
+    public function __construct(ConsumerOptions $options = null)
     {
-        return $this->address;
+        parent::__construct($options);
     }
 
     /**
-     * @param ConsumerOptions $consumerOptions
      * @return ConsumerMakerInterface
-     * @throws OptionNotFoundException
-     * @throws WordlistNotFoundException
+     * @throws OptionNotFoundException|WordlistNotFoundException
      */
-    public function make(ConsumerOptions $consumerOptions): ConsumerMakerInterface
+    public function make(): ConsumerMakerInterface
     {
-        $options = $consumerOptions::getOption('address');
-        $row = (new Consumer($options['wordlist']))->row();
-        $this->address = $this->makeAddress(explode(',', $row));
+        $consumer = new Consumer($this->wordlist('address'));
+        $address = explode(',', $consumer->row());
+        $this->maker = (object) array_combine(['city', 'country', 'state', 'geoNameId'], $address);
 
         return $this;
-    }
-
-    /**
-     * @param array $row
-     * @return object
-     */
-    private function makeAddress(array $row): object
-    {
-        $address = new stdClass();
-        $address->city = $row[0];
-        $address->country = $row[1];
-        $address->state = $row[2];
-        $address->geoNameId = $row[3];
-
-        return $address;
     }
 }
