@@ -41,4 +41,14 @@ class Consumer
 
         return file($this->path);
     }
+
+    /**
+     * @return string
+     * @throws WordlistNotFoundException
+     */
+    public function row(): string
+    {
+        $file = $this->open();
+        return trim($file[array_rand($file)]);
+    }
 }
