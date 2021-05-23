@@ -42,10 +42,19 @@ ConsumerOptions::addOption('surname', ['wordlist' => __DIR__ . '/wordlist/surnam
 ConsumerOptions::addOption('email', ['wordlist' => __DIR__ . '/wordlist/domains.txt']);
 
 /**
+ * wordlist: your wordlist address
+ */
+ConsumerOptions::addOption('address', [
+    'wordlist' => __DIR__ . '/wordlist/address.txt'
+]);
+
+/**
  * Make person with options
  */
 $person = new PersonConsumer($options);
+
 dump($person);
+
 dump('My name is ' . $person->name);
 dump('I have ' . $person->age . ' years');
 dump('I was born on the ' . $person->birth->day .  'th of the ' . $person->birth->month . 'th month');

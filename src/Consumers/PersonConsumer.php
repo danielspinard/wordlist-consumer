@@ -2,96 +2,50 @@
 
 namespace WordlistConsumer\Consumers;
 
-use WordlistConsumer\Interfaces\ConsumerInterface;
-use WordlistConsumer\Interfaces\ConsumerMakerInterface;
+use WordlistConsumer\ConsumerBase;
 use WordlistConsumer\ConsumerOptions;
 use WordlistConsumer\Maker\PersonMaker;
 
-class PersonConsumer implements ConsumerInterface
+class PersonConsumer extends ConsumerBase
 {
     /**
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * @var string
      */
-    protected $surname;
+    protected string $surname;
 
     /**
      * @var string
      */
-    protected $email;
+    protected string $email;
 
     /**
      * @var int
      */
-    protected $age;
+    protected int $age;
 
     /**
      * @var object
      */
-    protected $birth;
+    protected object $birth;
 
     /**
      * @var object
      */
-    protected $address;
+    protected object $address;
 
     /**
      * Person constructor
-     * 
-     * @param ConsumerOptions $option
+     *
+     * @param ConsumerOptions|null $options
      */
-    public function __construct(ConsumerOptions $consumerOptions = null)
+    public function __construct(ConsumerOptions $options = null)
     {
-        $this->__make((new PersonMaker)->make($consumerOptions));
-    }
-
-    /**
-     * @param string $attribute
-     * @param mixed $value
-     * @return ConsumerInterface
-     */
-    public function __set(string $attribute, $value): ConsumerInterface
-    {
-        $this->$attribute = $value;
-        return $this;
-    }
-
-    /**
-     * @param string $attribute
-     * @param mixed $value
-     * @return mixed
-     */
-    public function __get(string $attribute)
-    {
-        return ($this->__isset($attribute) ? $this->$attribute : null);
-    }
-
-    /**
-     * @param string $attribute
-     * @param mixed $value
-     * @return bool
-     */
-    public function __isset(string $attribute): bool
-    {
-        return isset($this->$attribute);
-    }
-
-    /**
-     * @param PersonMaker $maker
-     * @return ConsumerMakerInterface
-     */
-    public function __make(ConsumerMakerInterface $maker): ConsumerInterface
-    {
-        $person = $maker->result();
-
-        foreach ($person as $attribute => $value) {
-            $this->__set($attribute, $value);
-        }
-
-        return $this;
+        parent::__construct($options);
+        $this->__make(new PersonMaker());
     }
 }

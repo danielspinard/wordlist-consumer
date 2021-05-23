@@ -9,7 +9,7 @@ class Consumer
     /**
      * @var string
      */
-    private $path;
+    private string $path;
 
     /**
      * Consumer constructor
@@ -31,6 +31,7 @@ class Consumer
 
     /**
      * @return array
+     * @throws WordlistNotFoundException
      */
     public function open(): array
     {
@@ -39,5 +40,15 @@ class Consumer
         }
 
         return file($this->path);
+    }
+
+    /**
+     * @return string
+     * @throws WordlistNotFoundException
+     */
+    public function row(): string
+    {
+        $file = $this->open();
+        return trim($file[array_rand($file)]);
     }
 }

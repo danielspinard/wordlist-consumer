@@ -20,36 +20,48 @@ Open library [Packagist](https://packagist.org/packages/danielspinard/wordlist-c
 
 ### Consumers
 Person - ✔️ <br>
-Address - ❌ <br>
+Address - ✔ <br>
 Company - ❌
 
 ### Tests output
 ```
-php tests/facade.php 
+php example/facade.php 
 
 ^ "name: Yvan"
 ^ "other name: Edwards"
 ^ "two random surnames: Jackson - Wood"
 ```
+
 ```
-php tests/person.php 
+php example/person.php 
 
 ^ WordlistConsumer\Consumers\Person^ {
-  -name: "Maarten"
-  -surname: "Giles"
-  -email: "maartengile6125@outlook.com"
-  -age: 36
+  #name: "Maarten"
+  #surname: "Giles"
+  #email: "maartengile6125@outlook.com"
+  #age: 36
   -birth: {
     +"day": 10
     +"month": 12
     +"year": 1985
   }
-  -address: null
+  #address: null
 }
 
 ^ "My name is Maarten"
 ^ "I have 36 years"
 ^ "I was born on the 10th of the 12th month"
 ^ "Send me an e-mail at maartengile6125@outlook.com"
+```
+
+```
+php example/address.php 
+
+^ WordlistConsumer\Consumers\AddressConsumer^ {#6
+  #city: "Menifee"
+  #state: "California"
+  #country: "United States"
+  #geoNameId: 5372205
+}
 
 ```
