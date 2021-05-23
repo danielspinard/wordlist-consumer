@@ -10,7 +10,7 @@ class ConsumerOptions
     /**
      * @var array
      */
-    private static $options = [];
+    private static array $options = [];
 
     /**
      * @param string $name
@@ -30,6 +30,7 @@ class ConsumerOptions
     /**
      * @param array $options
      * @return ConsumerOptions
+     * @throws OptionAlreadyDefinedException
      */
     public static function create(array $options = []): ConsumerOptions
     {
@@ -44,6 +45,7 @@ class ConsumerOptions
      * @param string $option
      * @param array $config
      * @return ConsumerOptions
+     * @throws OptionAlreadyDefinedException
      */
     public static function addOption(string $option, array $config): ConsumerOptions
     {
@@ -58,6 +60,7 @@ class ConsumerOptions
     /**
      * @param string $name
      * @return array
+     * @throws OptionNotFoundException
      */
     public static function getOption(string $name): array
     {
@@ -73,6 +76,7 @@ class ConsumerOptions
     /**
      * @param array $options
      * @return ConsumerOptions
+     * @throws OptionAlreadyDefinedException
      */
     public static function addOptions(array $options): ConsumerOptions
     {
