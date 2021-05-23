@@ -7,13 +7,22 @@ use WordlistConsumer\ConsumerOptions;
 interface ConsumerMakerInterface
 {
     /**
-     * @param ConsumerOptions $options
+     * @param ConsumerOptions|null $options
+     */
+    public function __construct(ConsumerOptions $options = null);
+
+    /**
      * @return ConsumerMakerInterface
      */
-    public function make(ConsumerOptions $options): ConsumerMakerInterface;
+    public function make(): ConsumerMakerInterface;
 
     /**
      * @return object
      */
     public function result(): object;
+
+    /**
+     * @return string
+     */
+    public function toJson(): string;
 }
