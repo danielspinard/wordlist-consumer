@@ -10,13 +10,7 @@ interface ConsumerMakerInterface
      * @param ConsumerOptions $options
      * @return ConsumerMakerInterface
      */
-    public function reset(ConsumerOptions $options = null): ConsumerMakerInterface;
-
-    /**
-     * @param ConsumerOptions $options
-     * @return ConsumerMakerInterface
-     */
-    public function make(ConsumerOptions $options = null): ConsumerMakerInterface;
+    public function make(ConsumerOptions $options): ConsumerMakerInterface;
 
     /**
      * @return object
