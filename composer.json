@@ -21,6 +21,9 @@
             "WordlistConsumer\\": "src/"
         }
     },
+    "require": {
+        "php": ">=7.4"
+    },
     "require-dev": {
         "symfony/error-handler": "5.2.*"
     }
