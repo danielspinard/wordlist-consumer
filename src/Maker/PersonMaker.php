@@ -129,9 +129,17 @@ class PersonMaker extends MakerBase
 
     /**
      * @return void
+     * @throws WordlistNotFoundException|OptionNotFoundException
      */
     private function makeAddress(): void
     {
-        $this->maker->address = new stdClass();
+        try {
+            $address = new AddressMaker($this->options);
+            $result = $address->make()->result();
+        } catch (WordlistNotFoundException $exception) {
+            $result = new stdClass();
+        }
+
+        $this->maker->address = $result;
     }
 }
