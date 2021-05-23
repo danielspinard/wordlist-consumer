@@ -9,7 +9,7 @@ class Consumer
     /**
      * @var string
      */
-    private $path;
+    private string $path;
 
     /**
      * Consumer constructor
@@ -31,6 +31,7 @@ class Consumer
 
     /**
      * @return array
+     * @throws WordlistNotFoundException
      */
     public function open(): array
     {
