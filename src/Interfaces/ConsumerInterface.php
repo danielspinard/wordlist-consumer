@@ -7,7 +7,7 @@ use WordlistConsumer\ConsumerOptions;
 interface ConsumerInterface
 {
     /**
-     * @param ConsumerOptions $options
+     * @param ConsumerOptions|null $options
      */
     public function __construct(ConsumerOptions $options = null);
 
@@ -20,7 +20,6 @@ interface ConsumerInterface
 
     /**
      * @param string $attribute
-     * @param mixed $value
      * @return mixed
      */
     public function __get(string $attribute);
